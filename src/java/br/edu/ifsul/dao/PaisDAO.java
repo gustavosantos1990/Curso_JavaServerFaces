@@ -26,7 +26,7 @@ public class PaisDAO implements Serializable {
     }
     
     public List<Pais> getLista(){
-        return em.createQuery("from Pais order by nome").getResultList();
+        return em.createQuery("from Pais p order by nome").getResultList();
     }
     
     public boolean salvar(Pais obj){
