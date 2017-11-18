@@ -2,10 +2,12 @@ package br.edu.ifsul.controle;
 
 import br.edu.ifsul.dao.CidadeDAO;
 import br.edu.ifsul.dao.PessoaFisicaDAO;
+import br.edu.ifsul.dao.ProdutoDAO;
 import br.edu.ifsul.dao.TipoEnderecoDAO;
 import br.edu.ifsul.modelo.Cidade;
 import br.edu.ifsul.modelo.Endereco;
 import br.edu.ifsul.modelo.PessoaFisica;
+import br.edu.ifsul.modelo.Produto;
 import br.edu.ifsul.modelo.TipoEndereco;
 import br.edu.ifsul.util.Util;
 import java.io.Serializable;
@@ -22,11 +24,31 @@ public class ControlePessoaFisica implements Serializable {
     private TipoEnderecoDAO<TipoEndereco> daoTipoEndereco;
     private Endereco endereco;
     private Boolean novoEndereco;
+    private ProdutoDAO<Produto> daoProduto;
+    private Produto produto;
 
     public ControlePessoaFisica() {
         dao = new PessoaFisicaDAO<>();
         daoCidade = new CidadeDAO<>();
         daoTipoEndereco = new TipoEnderecoDAO<>();
+        daoProduto = new ProdutoDAO<>();
+    }
+    
+    public void adicionarDesejo(){
+        if(produto != null){
+            if(!objeto.getDesejos().contains(produto)){
+                objeto.getDesejos().add(produto);
+                Util.mensagemInformacao("Desejo adicionado com sucesso!");
+            } else {
+                Util.mensagemErro("Este desejo já existe na sua lista!");
+            }
+        }
+    }
+    
+    public void removerDesejo(int index){
+        produto = objeto.getDesejos().get(index);
+        objeto.getDesejos().remove(produto);
+        Util.mensagemInformacao("Desejo removido com sucesso!");
     }
 
     public String listar() {
@@ -134,6 +156,22 @@ public class ControlePessoaFisica implements Serializable {
 
     public void setNovoEndereco(Boolean novoEndereco) {
         this.novoEndereco = novoEndereco;
+    }
+
+    public ProdutoDAO<Produto> getDaoProduto() {
+        return daoProduto;
+    }
+
+    public void setDaoProduto(ProdutoDAO<Produto> daoProduto) {
+        this.daoProduto = daoProduto;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
 }

@@ -39,7 +39,7 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${reference.IFSULModelJPA2_0-1.jar}</file>
+                    <file>${reference.IFSULModelJPA2_0.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
@@ -56,7 +56,7 @@
         </libraries>
         <references xmlns="http://www.netbeans.org/ns/ant-project-references/1">
             <reference>
-                <foreign-project>IFSULModelJPA2_0-1</foreign-project>
+                <foreign-project>IFSULModelJPA2_0</foreign-project>
                 <artifact-type>jar</artifact-type>
                 <script>build.xml</script>
                 <target>jar</target>
